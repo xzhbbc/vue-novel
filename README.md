@@ -1,21 +1,21 @@
-# new_novel
+# vue-novel
 
 > A Vue.js project
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
+## Build Setup
 
-# serve with hot reload at localhost:8080
-npm run dev
+``` bash
+# 前端项目已经打包完成
 
-# build for production with minification
-npm run build
+# 项目上线地址：http://120.77.209.3:3002/#/
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 该项目开启地址为： server/app.js 端口：3002
+node app 或 nodemon app.js
+
+# moogodb数据库导出在：server/db  端口：27022
+导入代码:
+mongoimport -h 127.0.0.1:27022 -d books(数据库名) -c 表名 --file json导出数据路径
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
