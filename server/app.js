@@ -67,6 +67,12 @@ app.use("/ue", ueditor(path.join(__dirname, '../static'), function (req, res, ne
 
 // 引入文件模块
 const fs = require('fs');
+<<<<<<< HEAD
+=======
+//添加分类
+// const category = require('./modelSchemas/categoryBook')
+// var category =
+>>>>>>> fix dist db
 
 app.use(express.static(path.resolve(__dirname, '../dist')))
 // 因为是单页应用 所有请求都走/dist/index.html
@@ -75,6 +81,7 @@ app.get('*', function(req, res) {
   res.send(html)
 })
 
+<<<<<<< HEAD
 // app.use(function (req, res, next) {
 //   if (req.url.startsWith('/user/') || req.url.startsWith('/book/') ||
 //     req.url.startsWith('/front/') || req.url.startsWith('/rating/') ||
@@ -89,6 +96,9 @@ app.get('*', function(req, res) {
 // app.use(express.static(path.resolve(__dirname, '../dist')))
 // console.log(express.static(path.resolve('dist/index.html')))
 // app.use('/', express.static(path.resolve('dist/index.html')))
+=======
+
+>>>>>>> fix dist db
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27022/books', function (err) {

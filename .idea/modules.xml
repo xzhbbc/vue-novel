@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/novel.iml" filepath="$PROJECT_DIR$/.idea/novel.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/vue-novel.iml" filepath="$PROJECT_DIR$/.idea/vue-novel.iml" />
+>>>>>>> fix dist db
     </modules>
   </component>
 </project>

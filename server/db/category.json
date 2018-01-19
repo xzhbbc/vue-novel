@@ -1,0 +1,14 @@
+{"_id":{"$oid":"5a1e5cd4aeb4c624103a9a83"},"num":"c01","category":"玄幻","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63ea"},"num":"c02","category":"奇幻","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63ec"},"num":"c04","category":"仙侠","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63eb"},"num":"c03","category":"武侠","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63ed"},"num":"c05","category":"都市","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63ef"},"num":"c07","category":"军事","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63ee"},"num":"c06","category":"现实","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f0"},"num":"c08","category":"历史","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f2"},"num":"c10","category":"体育","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f1"},"num":"c09","category":"游戏","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f3"},"num":"c11","category":"科幻","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f4"},"num":"c12","category":"灵异","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f5"},"num":"c13","category":"女生网","__v":0}
+{"_id":{"$oid":"5a1e5df3568b123b70ec63f6"},"num":"c14","category":"二次元","__v":0}
