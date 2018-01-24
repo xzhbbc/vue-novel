@@ -66,39 +66,94 @@ app.use("/ue", ueditor(path.join(__dirname, '../static'), function (req, res, ne
 }));
 
 // 引入文件模块
-const fs = require('fs');
-<<<<<<< HEAD
-=======
-//添加分类
-// const category = require('./modelSchemas/categoryBook')
-// var category =
->>>>>>> fix dist db
+const fs = require('fs')
+
+//ssr 首屏加载
+const Vue = require('vue')
+const renderer = require('vue-server-renderer').createRenderer()
+
+const staticPath = require('../dist/vue-ssr-client-manifest.json')
+
 
 app.use(express.static(path.resolve(__dirname, '../dist')))
 // 因为是单页应用 所有请求都走/dist/index.html
 app.get('*', function(req, res) {
-  const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8')
-  res.send(html)
+  // const html = fs.readFileSync(path.resolve(__dirname, '../dist/index.html'), 'utf-8')
+  // res.send(html)
+  const apphtml = new Vue({
+    data: {
+      url: req.url
+    },
+    template: ` <div id="app">
+    <Headers></Headers>
+    <Navs></Navs>
+    <router-view></router-view>
+    <Login></Login>
+    <register></register>
+    <bookcase></bookcase>
+  </div>`
+  })
+//   let text = ''
+//   const stream = renderer.renderToStream(apphtml)
+//   stream.on('err', err => {
+//     // handle error...
+//     res.status(500).end('Internal Server Error')
+//   })
+//   res.write(`<!DOCTYPE html>
+// <html>
+//   <head>
+//     <meta charset="utf-8">
+//     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+//     <link rel="stylesheet" type="text/css" href="static/reset.css"/>
+//     <link rel="stylesheet" type="text/css" href="static/style.css"/>
+//     <link href="${staticPath["all"][4]}" rel="stylesheet">
+//     <title>new_novel</title>
+//   </head>
+//   <body>`)
+//   stream.on('html', data => {
+//     res.write(`${data}`)
+//   })
+//   stream.on('end', () => {
+//     res.write(`
+//     <script type="text/javascript" src="${staticPath["initial"][0]}"></script>
+//     <script type="text/javascript" src="${staticPath["initial"][1]}"></script>
+//     <script type="text/javascript" src="${staticPath["initial"][2]}"></script>
+//   </body>
+// </html>`)
+//     res.end()
+//   })
+  renderer.renderToString(apphtml, (err, html) => {
+    if (err) {
+      res.status(500).end('Internal Server Error')
+      return
+    }
+    res.end(`
+      <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="static/style.css"/>
+    <link href="${staticPath["all"][4]}" rel="stylesheet">
+    <title>new_novel</title>
+  </head>
+  <body>
+    ${html}
+    <script type="text/javascript" src="${staticPath["initial"][0]}"></script>
+    <script type="text/javascript" src="${staticPath["initial"][1]}"></script>
+    <script type="text/javascript" src="${staticPath["initial"][2]}"></script>
+  </body>
+</html>
+    `)
+  })
 })
 
-<<<<<<< HEAD
-// app.use(function (req, res, next) {
-//   if (req.url.startsWith('/user/') || req.url.startsWith('/book/') ||
-//     req.url.startsWith('/front/') || req.url.startsWith('/rating/') ||
-//     req.url.startsWith('/comment/') || req.url.startsWith('/ue/') ||
-//     req.url.startsWith('/static/')) {
-//     return next()
-//   }
-// })
-//
 // var rootPath = path.resolve(__dirname, '..');
 // app.use('/', express.static(rootPath + '/dist/'));
 // app.use(express.static(path.resolve(__dirname, '../dist')))
 // console.log(express.static(path.resolve('dist/index.html')))
 // app.use('/', express.static(path.resolve('dist/index.html')))
-=======
-
->>>>>>> fix dist db
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27022/books', function (err) {
@@ -106,7 +161,7 @@ mongoose.connect('mongodb://localhost:27022/books', function (err) {
     console.log('数据库连接失败');
   } else {
     // console.log(path.join(__dirname, '../static/ueditor'))
-    // console.log(statics);
+    // console.log(staticPath["initial"][0]);
     console.log('数据库连接成功');
     app.listen(3002);
   }
